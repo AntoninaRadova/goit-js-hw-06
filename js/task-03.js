@@ -1,35 +1,23 @@
 const images = [
   {
-    url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    alt: 'White and Black Long Fur Cat',
+    url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    alt: "White and Black Long Fur Cat",
   },
   {
-    url: 'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
+    url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    alt: "Orange and White Koi Fish Near Yellow Koi Fish",
   },
   {
-    url: 'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    alt: 'Group of Horses Running',
+    url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    alt: "Group of Horses Running",
   },
 ];
-const list = document.querySelector(".gallery"); // Пошук списку
 
-const htmlMarkup = images
-  .map(
-    (image) =>
-      `<li><img class="photo" src="${image.url}" width="333" alt="${image.alt}"></li>`
-  )
-  .join(""); // Прибираємо ","
+const imageMarkup = ({ url, alt }) => {
+  return `<li class="cats-item"><img class="cats-img"  src=${url} alt=${alt}></li>`;
+};
 
-list.insertAdjacentHTML("beforeend", htmlMarkup);
+const galleryEL = document.querySelector(".gallery");
 
-const photos = document.querySelectorAll(".photo"); // Пошук всіх фотографій
-
-list.style.display = "flex";
-list.style.gap = "30px";
-list.style.padding = "50px";
-list.style.justifyContent = "center";
-list.style.alignItems = "center";
-list.style.listStyleType = "none";
-list.style.borderRadius = "50px";
-list.style.backgroundColor = "darkseagreen";
+const makeMarkup = images.map(imageMarkup).join("");
+galleryEL.insertAdjacentHTML("afterbegin", makeMarkup);
