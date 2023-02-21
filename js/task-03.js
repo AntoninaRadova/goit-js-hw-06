@@ -12,3 +12,24 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+const list = document.querySelector(".gallery"); // Пошук списку
+
+const htmlMarkup = images
+  .map(
+    (image) =>
+      `<li><img class="photo" src="${image.url}" width="333" alt="${image.alt}"></li>`
+  )
+  .join(""); // Прибираємо ","
+
+list.insertAdjacentHTML("beforeend", htmlMarkup);
+
+const photos = document.querySelectorAll(".photo"); // Пошук всіх фотографій
+
+list.style.display = "flex";
+list.style.gap = "30px";
+list.style.padding = "50px";
+list.style.justifyContent = "center";
+list.style.alignItems = "center";
+list.style.listStyleType = "none";
+list.style.borderRadius = "50px";
+list.style.backgroundColor = "darkseagreen";
